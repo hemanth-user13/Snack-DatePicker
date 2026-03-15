@@ -6,6 +6,14 @@ A modern **React Date Picker & Date Range Picker** built for flexibility, perfor
 
 Ideal for **analytics dashboards, booking systems, reporting tools, admin panels, data filters, and forms**.
 
+<p align="center">
+  <img src="https://github.com/hemanth-user13/Snack-DatePicker/blob/master/src/assests/Screenshot%202026-03-15%20183307.png" width="900"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/hemanth-user13/Snack-DatePicker/blob/master/src/assests/Screenshot%202026-03-15%20183352.png" width="900"/>
+</p>
+
 ## Features
 
 - 📅 **Single Date Picker** — clean, minimal single date selection
