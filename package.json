@@ -1,7 +1,7 @@
 {
   "name": "snack-datepicker",
   "version": "0.0.1",
-  "description": "A rich date picker which is more optimal and accurate ",
+  "description": "A modern, lightweight and customizable React DatePicker and Date Range Picker with presets, multi-month view and flexible configuration.",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -21,6 +21,22 @@
     "README.md"
   ],
   "sideEffects": false,
+  "keywords": [
+    "react datepicker",
+    "react date range picker",
+    "react calendar",
+    "react date picker",
+    "date range picker",
+    "tailwind datepicker",
+    "modern react datepicker",
+    "react calendar component",
+    "react ui datepicker",
+    "lightweight react datepicker",
+    "react reusable components",
+    "react typescript datepicker",
+    "date picker component",
+    "react ui library"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
