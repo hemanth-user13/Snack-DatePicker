@@ -1,6 +1,6 @@
 {
   "name": "snack-datepicker",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A modern, lightweight and customizable React DatePicker and Date Range Picker with presets, multi-month view and flexible configuration.",
   "type": "module",
   "main": "./dist/index.js",
