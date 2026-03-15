@@ -1,158 +1,176 @@
-Snack Datepicker
+# 📅 Snack Datepicker
 
-A modern, flexible, and fully customizable React Date Picker & Date
-Range Picker built for performance and developer experience.
+A modern **React Date Picker & Date Range Picker** built for flexibility, performance, and developer experience.
 
-Snack Datepicker supports single date selection and date range selection
-with powerful customization options such as presets, custom day
-rendering, disabled dates, and configurable month views.
+**Snack Datepicker** provides a clean, customizable, and lightweight component for selecting **single dates** or **date ranges**, with powerful configuration options such as presets, disabled dates, multi-month view, and custom day rendering.
 
-It is designed to be lightweight, reusable, and production-ready for
-modern React applications.
+Ideal for **analytics dashboards, booking systems, reporting tools, admin panels, data filters, and forms**.
 
----
+## Features
 
-FEATURES
+- 📅 **Single Date Picker** — clean, minimal single date selection
+- 📆 **Date Range Picker** — intuitive start and end date selection
+- 🎯 **Preset date ranges** — quickly jump to common ranges like Last 7 Days or Last 30 Days
+- 📊 **Multi-month view** — display multiple months simultaneously
+- 🔒 **Min / Max date restrictions** — constrain selectable dates to a valid range
+- 🚫 **Disabled dates support** — block out specific unavailable dates
+- 🎨 **Custom day renderer** — full control over how each day cell looks
+- ⚡ **Lightweight & fast** — minimal bundle impact, tree-shakable
+- 🧩 **Highly customizable** — adapt to any design system
+- ⚛️ **Built for modern React** — hooks-first, no legacy patterns
 
-• Single Date Picker • Date Range Picker • Custom Preset Ranges •
-Multiple Month Views • Min / Max Date Support • Disabled Dates Support •
-Custom Day Rendering • Optional Footer Controls • Configurable Week
-Start • Fully Controlled or Uncontrolled Usage • Lightweight and
-Tree-Shakable • Built with modern React practices
+## Installation
 
----
-
-INSTALLATION
-
+```bash
 npm install snack-datepicker
-
-or
-
+# or
 yarn add snack-datepicker
+```
 
----
+### Peer Dependencies
 
-BASIC USAGE
+Ensure your project has these installed:
 
-import { DatePicker } from “snack-datepicker”; import { useState } from
-“react”;
+```bash
+npm install react react-dom
+```
 
-export default function Example() { const [value, setValue] =
-useState(null);
+## Usage
 
-return ( <DatePicker mode=“single” value={value} onChange={(date) =>
-setValue(date)} /> ); }
+> [!IMPORTANT]
+> You must import the stylesheet for the datepicker to display correctly:
+>
+> ```tsx
+> import "snack-datepicker/dist/style.css";
+> ```
 
----
+### Basic
 
-DATE RANGE EXAMPLE
+```tsx
+import { DatePicker } from "snack-datepicker";
+import "snack-datepicker/dist/style.css";
 
-import { DatePicker } from “snack-datepicker”; import { useState } from
-“react”;
-
-export default function RangeExample() { const [range, setRange] =
-useState({ start: null, end: null, });
-
-return ( <DatePicker mode=“range” value={range} onChange={(val) =>
-setRange(val)} numberOfMonths={2} /> ); }
-
----
-
-PRESET RANGE EXAMPLE
-
-import { DatePicker } from “snack-datepicker”;
-
-const presets = [ { label: “Last 7 Days”, getValue: () => { const end =
-new Date(); const start = new Date(); start.setDate(end.getDate() - 7);
-return { start, end }; }, },];
-
----
-
-PROPS
-
-mode Type: “single” | “range” Description: Defines picker mode
-
-value Type: Date | DateRange Description: Current selected value
-
-onChange Type: (value) => void Description: Triggered when date changes
-
-onApply Type: (value) => void Description: Triggered when apply button
-is clicked
-
-onReset Type: () => void Description: Triggered when reset button is
-clicked
-
-minDate Type: Date Description: Minimum selectable date
-
-maxDate Type: Date Description: Maximum selectable date
-
-disabledDates Type: Date[] Description: Array of disabled dates
-
-weekStart Type: 0 | 1 Description: Start of week (0 = Sunday, 1 =
-Monday)
-
-numberOfMonths Type: number Description: Number of months displayed
-
-showFooter Type: boolean Description: Show apply/reset footer
-
-className Type: string Description: Custom styling class
-
-renderDay Type: (date: Date) => ReactNode Description: Custom day
-renderer
-
-presets Type: PresetRange[] Description: Custom preset date ranges
-
----
-
-TYPES
-
-export type DatePickerMode = “single” | “range”;
-
-export interface DateRange { start: Date | null; end: Date | null; }
-
-export interface PresetRange { label: string; getValue: () => DateRange;
+function App() {
+  return <DatePicker mode="single" onChange={(date) => console.log(date)} />;
 }
 
-export interface DatePickerProps { mode?: DatePickerMode; value?: Date |
-DateRange; onChange?: (value: Date | DateRange) => void; onApply?:
-(value: Date | DateRange | undefined) => void; onReset?: () => void;
-minDate?: Date; maxDate?: Date; disabledDates?: Date[]; weekStart?: 0 |
-1; numberOfMonths?: number; showFooter?: boolean; className?: string;
-renderDay?: (date: Date) => ReactNode; presets?: PresetRange[]; }
+export default App;
+```
 
----
+### Date Range Example
 
-EXPORT
+```tsx
+import { DatePicker } from "snack-datepicker";
+import { useState } from "react";
 
-export { DatePicker } from “snack-datepicker”;
+function App() {
+  const [range, setRange] = useState({
+    start: null,
+    end: null,
+  });
 
----
+  return (
+    <DatePicker
+      mode="range"
+      value={range}
+      onChange={(value) => setRange(value)}
+      numberOfMonths={2}
+    />
+  );
+}
+```
 
-BUILT WITH
+### Preset Range Example
 
-React Radix UI date-fns TailwindCSS Framer Motion Lucide Icons
+```tsx
+import { DatePicker } from "snack-datepicker";
 
----
+const presets = [
+  {
+    label: "Last 7 Days",
+    getValue: () => {
+      const end = new Date();
+      const start = new Date();
+      start.setDate(end.getDate() - 7);
+      return { start, end };
+    },
+  },
+  {
+    label: "Last 30 Days",
+    getValue: () => {
+      const end = new Date();
+      const start = new Date();
+      start.setDate(end.getDate() - 30);
+      return { start, end };
+    },
+  },
+];
 
-PEER DEPENDENCIES
+function App() {
+  return <DatePicker mode="range" presets={presets} />;
+}
+```
 
-react >= 18 react-dom >= 18
+### Props API
 
----
+| Prop             | Type                        | Description                             |
+| ---------------- | --------------------------- | --------------------------------------- |
+| `mode`           | `"single" \| "range"`       | Date picker mode                        |
+| `value`          | `Date \| DateRange`         | Current selected value                  |
+| `onChange`       | `(value) => void`           | Triggered when date changes             |
+| `onApply`        | `(value) => void`           | Triggered when apply button is clicked  |
+| `onReset`        | `() => void`                | Reset the current selection             |
+| `minDate`        | `Date`                      | Minimum selectable date                 |
+| `maxDate`        | `Date`                      | Maximum selectable date                 |
+| `disabledDates`  | `Date[]`                    | Disable specific dates                  |
+| `weekStart`      | `0 \| 1`                    | Week start day (0 = Sunday, 1 = Monday) |
+| `numberOfMonths` | `number`                    | Number of months displayed at once      |
+| `showFooter`     | `boolean`                   | Show apply / reset footer               |
+| `className`      | `string`                    | Custom CSS class for styling            |
+| `renderDay`      | `(date: Date) => ReactNode` | Custom day cell renderer                |
+| `presets`        | `PresetRange[]`             | Preset date range options               |
 
-LICENSE
+### Types
 
-MIT License
+```ts
+export type DatePickerMode = "single" | "range";
 
----
+export interface DateRange {
+  start: Date | null;
+  end: Date | null;
+}
 
-AUTHOR
+export interface PresetRange {
+  label: string;
+  getValue: () => DateRange;
+}
 
-Hemanth Dev
+export interface DatePickerProps {
+  mode?: DatePickerMode;
+  value?: Date | DateRange;
+  onChange?: (value: Date | DateRange) => void;
+  onApply?: (value: Date | DateRange | undefined) => void;
+  onReset?: () => void;
+  minDate?: Date;
+  maxDate?: Date;
+  disabledDates?: Date[];
+  weekStart?: 0 | 1;
+  numberOfMonths?: number;
+  showFooter?: boolean;
+  className?: string;
+  renderDay?: (date: Date) => ReactNode;
+  presets?: PresetRange[];
+}
+```
 
----
+## Built With
 
-CONTRIBUTING
+[React](https://react.dev) · [Radix UI](https://www.radix-ui.com) · [date-fns](https://date-fns.org) · [TailwindCSS](https://tailwindcss.com) · [Framer Motion](https://www.framer.com/motion) · [Lucide Icons](https://lucide.dev)
 
-Contributions, issues, and feature requests are welcome. Feel free to
-open an issue or submit a pull request.
+## License
+
+MIT
+
+## Author
+
+**Hemanth Dev**
