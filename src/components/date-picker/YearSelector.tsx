@@ -39,8 +39,8 @@ const YearSelector: React.FC<YearSelectorProps> = ({
             className={cn(
               "py-3 text-sm font-medium rounded-lg transition-all active:scale-[0.97]",
               currentYear === y
-                ? "bg-dp-surface-active text-dp-text-selected shadow-sm"
-                : "hover:bg-dp-surface-hover text-dp-text",
+                ? "bg-primary text-primary-foreground shadow-sm"
+                : "hover:bg-gray-100 text-gray-900",
               disabled && "opacity-30 cursor-not-allowed",
             )}
           >

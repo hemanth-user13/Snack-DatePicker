@@ -70,7 +70,7 @@ const MonthGrid: React.FC<MonthGridProps> = ({
     <div className="flex-1 min-w-[252px]">
       {showLabel && (
         <div className="text-center mb-3">
-          <span className="text-sm font-medium text-dp-text">
+          <span className="text-sm font-medium text-gray-900">
             {format(month, "MMMM yyyy")}
           </span>
         </div>
@@ -79,7 +79,7 @@ const MonthGrid: React.FC<MonthGridProps> = ({
         {weekDays.map((d) => (
           <span
             key={d}
-            className="text-[11px] font-semibold text-dp-text-muted text-center uppercase tracking-wider py-1"
+            className="text-[11px] font-semibold text-gray-400 text-center uppercase tracking-wider py-1"
           >
             {d}
           </span>
@@ -140,15 +140,15 @@ const MonthGrid: React.FC<MonthGridProps> = ({
               aria-selected={!!isSelected}
               className={cn(
                 "relative h-9 w-9 text-sm flex items-center justify-center transition-all tabular-nums",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1",
                 "active:scale-[0.96]",
                 // Default
                 !isSelected &&
                   !inRange &&
-                  "text-dp-text hover:bg-dp-surface-hover rounded-lg",
+                  "text-gray-900 hover:bg-gray-100 rounded-lg",
                 // Selected (start/end/single)
                 isSelected &&
-                  "bg-dp-surface-active text-dp-text-selected z-10 shadow-sm font-semibold",
+                  "bg-primary text-primary-foreground z-10 shadow-sm font-semibold",
                 // Single mode selected
                 mode === "single" && isSelected && "rounded-lg",
                 // Range endpoints
@@ -158,10 +158,10 @@ const MonthGrid: React.FC<MonthGridProps> = ({
                 // In range but not selected
                 inRange &&
                   !isSelected &&
-                  "bg-[hsl(var(--dp-range-tint)/0.08)] text-primary rounded-none",
+                  "bg-primary/10 text-primary rounded-none",
                 // Disabled
                 disabled &&
-                  "text-dp-text-muted/40 cursor-not-allowed hover:bg-transparent",
+                  "text-primary/40 cursor-not-allowed hover:bg-transparent",
               )}
             >
               {renderDay ? renderDay(day) : format(day, "d")}

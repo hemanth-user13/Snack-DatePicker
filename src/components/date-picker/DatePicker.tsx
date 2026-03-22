@@ -93,8 +93,8 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
       <div
         ref={ref}
         className={cn(
-          "inline-flex flex-col rounded-xl border border-dp-border bg-dp-surface select-none antialiased",
-          "shadow-[var(--dp-shadow)]",
+          "inline-flex flex-col rounded-xl border border-gray-200 bg-white select-none antialiased",
+          "shadow-md",
           className,
         )}
         onKeyDown={handleKeyDown}
@@ -102,11 +102,11 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
         aria-label="Date picker"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-dp-border">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200">
           <button
             type="button"
             onClick={() => setViewDate(subMonths(viewDate, 1))}
-            className="p-1.5 rounded-md hover:bg-dp-surface-hover text-dp-text-muted hover:text-dp-text transition-colors"
+            className="p-1.5 rounded-md hover:bg-gray-100 text-gray-400 hover:text-gray-900 transition-colors"
             aria-label="Previous month"
           >
             <ChevronLeft size={16} />
@@ -121,8 +121,8 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
               className={cn(
                 "text-sm font-semibold px-2 py-1 rounded-md transition-colors",
                 viewMode === "month"
-                  ? "bg-dp-surface-hover text-dp-text"
-                  : "hover:bg-dp-surface-hover text-dp-text",
+                  ? "bg-gray-100 text-gray-900"
+                  : "hover:bg-gray-100 text-gray-900",
               )}
             >
               {format(viewDate, "MMMM")}
@@ -135,8 +135,8 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
               className={cn(
                 "text-sm font-semibold px-2 py-1 rounded-md transition-colors",
                 viewMode === "year"
-                  ? "bg-dp-surface-hover text-dp-text"
-                  : "hover:bg-dp-surface-hover text-dp-text",
+                  ? "bg-gray-100 text-gray-900"
+                  : "hover:bg-gray-100 text-gray-900",
               )}
             >
               {format(viewDate, "yyyy")}
@@ -146,7 +146,7 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
           <button
             type="button"
             onClick={() => setViewDate(addMonths(viewDate, 1))}
-            className="p-1.5 rounded-md hover:bg-dp-surface-hover text-dp-text-muted hover:text-dp-text transition-colors"
+            className="p-1.5 rounded-md hover:bg-gray-100 text-gray-400 hover:text-gray-900 transition-colors"
             aria-label="Next month"
           >
             <ChevronRight size={16} />
@@ -157,13 +157,13 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
         <div className="flex">
           {/* Presets sidebar */}
           {presets && presets.length > 0 && (
-            <div className="border-r border-dp-border p-3 min-w-[140px] flex flex-col gap-0.5">
+            <div className="border-r border-gray-200 p-3 min-w-[140px] flex flex-col gap-0.5">
               {presets.map((preset) => (
                 <button
                   key={preset.label}
                   type="button"
                   onClick={() => handlePresetClick(preset)}
-                  className="text-left text-xs font-medium px-2.5 py-1.5 rounded-md text-dp-text-muted hover:text-dp-text hover:bg-dp-surface-hover transition-colors"
+                  className="text-left text-xs font-medium px-2.5 py-1.5 rounded-md text-gray-400 hover:text-gray-900 hover:bg-gray-100 transition-colors"
                 >
                   {preset.label}
                 </button>
@@ -230,11 +230,11 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
 
         {/* Footer */}
         {showFooter && (
-          <div className="flex items-center justify-between px-4 py-3 bg-dp-footer border-t border-dp-border rounded-b-xl">
+          <div className="flex items-center justify-between px-4 py-3 bg-gray-50 border-t border-gray-200 rounded-b-xl">
             <button
               type="button"
               onClick={onReset}
-              className="flex items-center gap-1.5 text-xs font-medium text-dp-text-muted hover:text-dp-text transition-colors"
+              className="flex items-center gap-1.5 text-xs font-medium text-gray-400 hover:text-gray-900 transition-colors"
             >
               <RotateCcw size={13} />
               Reset
@@ -242,7 +242,7 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
             <button
               type="button"
               onClick={() => onApply?.(value)}
-              className="px-5 py-1.5 bg-primary text-primary-foreground text-xs font-semibold rounded  hover:opacity-90 shadow-sm transition-all active:scale-[0.98]"
+              className="px-5 py-1.5 bg-primary text-primary-foreground text-xs font-semibold rounded hover:opacity-90 shadow-sm transition-all active:scale-[0.98]"
             >
               Apply
             </button>

@@ -57,11 +57,13 @@ npm install react react-dom
 ### Basic
 
 ```tsx
-import { DatePicker } from "snack-datepicker";
+import { DatePickerInput } from "snack-datepicker";
 import "snack-datepicker/dist/style.css";
 
 function App() {
-  return <DatePicker mode="single" onChange={(date) => console.log(date)} />;
+  return (
+    <DatePickerInput mode="single" onChange={(date) => console.log(date)} />
+  );
 }
 
 export default App;
@@ -70,7 +72,7 @@ export default App;
 ### Date Range Example
 
 ```tsx
-import { DatePicker } from "snack-datepicker";
+import { DatePickerInput } from "snack-datepicker";
 import { useState } from "react";
 
 function App() {
@@ -80,7 +82,7 @@ function App() {
   });
 
   return (
-    <DatePicker
+    <DatePickerInput
       mode="range"
       value={range}
       onChange={(value) => setRange(value)}
@@ -93,7 +95,7 @@ function App() {
 ### Preset Range Example
 
 ```tsx
-import { DatePicker } from "snack-datepicker";
+import { DatePickerInput } from "snack-datepicker";
 
 const presets = [
   {
@@ -117,7 +119,7 @@ const presets = [
 ];
 
 function App() {
-  return <DatePicker mode="range" presets={presets} />;
+  return <DatePickerInput mode="range" presets={presets} />;
 }
 ```
 
@@ -155,7 +157,7 @@ export interface PresetRange {
   getValue: () => DateRange;
 }
 
-export interface DatePickerProps {
+export interface DatePickerInputProps {
   mode?: DatePickerMode;
   value?: Date | DateRange;
   onChange?: (value: Date | DateRange) => void;

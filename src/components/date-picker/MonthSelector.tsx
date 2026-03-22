@@ -31,8 +31,8 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({
           className={cn(
             "py-3 text-sm font-medium rounded-lg transition-all active:scale-[0.97]",
             current === i
-              ? "bg-dp-surface-active text-dp-text-selected shadow-sm"
-              : "hover:bg-dp-surface-hover text-dp-text",
+              ? "bg-primary text-primary-foreground shadow-sm"
+              : "hover:bg-gray-100 text-gray-900",
           )}
         >
           {format(new Date(2024, i, 1), "MMM")}
